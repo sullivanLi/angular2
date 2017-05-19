@@ -8,9 +8,12 @@ import { TaxonProductsService } from '../services/taxon.products.service';
   moduleId: module.id,
   selector: 'taxonProduct',
   templateUrl: 'taxon.product.component.html',
+  styleUrls: ['../css/products.css'],
   providers: [TaxonProductsService]
 })
 export class TaxonProductComponent  {
+  products: Product[];
+  
   constructor(
     private taxonProductsService: TaxonProductsService,
     private route: ActivatedRoute
@@ -20,7 +23,8 @@ export class TaxonProductComponent  {
     this.route.params
       .switchMap((params: Params) => this.taxonProductsService.getProducts(params['id']))
       .subscribe(products => {
-        console.log(products);
+        console.log(products.products);
+        this.products = products.products;
       });
   }
 }
