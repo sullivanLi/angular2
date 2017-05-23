@@ -2,6 +2,7 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
+import { TaxonsService } from '../services/taxons.service';
 import { TaxonProductsService } from '../services/taxon.products.service';
 
 @Component({
@@ -9,22 +10,28 @@ import { TaxonProductsService } from '../services/taxon.products.service';
   selector: 'taxonProduct',
   templateUrl: 'taxon.product.component.html',
   styleUrls: ['../css/products.css'],
-  providers: [TaxonProductsService]
+  providers: [TaxonsService, TaxonProductsService]
 })
 export class TaxonProductComponent  {
+  taxon = {};
   products: Product[];
-  
+
   constructor(
     private taxonProductsService: TaxonProductsService,
+    private taxonsService: TaxonsService,
     private route: ActivatedRoute
   ) {}
-  
+
   ngOnInit(): void {
     this.route.params
       .switchMap((params: Params) => this.taxonProductsService.getProducts(params['id']))
-      .subscribe(products => {
-        console.log(products.products);
-        this.products = products.products;
+      .subscribe(productObj => {
+        this.products = productObj.products;
+      });
+    this.route.params
+      .switchMap((params: Params) => this.taxonsService.getTaxon(params['id']))
+      .subscribe(taxon => {
+        this.taxon = taxon;
       });
   }
 }
