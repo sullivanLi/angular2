@@ -8,6 +8,7 @@ import { TaxonComponent }  from './components/taxon.component';
 import { TaxonProductComponent }  from './components/taxon.product.component';
 import { HeaderComponent }  from './components/header.component';
 import { FooterComponent }  from './components/footer.component';
+import { HomeComponent }  from './components/home.component';
 
 const appRoutes: Routes = [
   { path: '', component: TaxonComponent, pathMatch: 'full' },
@@ -16,7 +17,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports:      [ RouterModule.forRoot(appRoutes), BrowserModule, HttpModule ],
-  declarations: [ AppComponent, TaxonComponent, TaxonProductComponent, HeaderComponent, FooterComponent ],
+  declarations: [ AppComponent, TaxonComponent, TaxonProductComponent, HeaderComponent, FooterComponent, HomeComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
