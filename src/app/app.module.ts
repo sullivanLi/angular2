@@ -13,7 +13,7 @@ import { ProductComponent }  from './components/product.component';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'taxons/:id', component: TaxonProductComponent },
-  { path: 'products/:id', component: ProductComponent }
+  { path: 'products/:slug', component: ProductComponent }
 ];
 
 @NgModule({
