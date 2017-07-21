@@ -10,8 +10,8 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductComponent  {
   product = {};
-  options = [];
-  image = [];
+  options: Option[];
+  image: Image[];
 
   constructor(
     private productService: ProductService,
@@ -25,8 +25,8 @@ export class ProductComponent  {
         this.product = productObj;
         console.log(this.product);
         this.image = productObj.master.images[0].product_url;
-        productObj.variants.forEach((variant) => {
-          variant.option_values.forEach((option) => {
+        productObj.variants.forEach((variant: any) => {
+          variant.option_values.forEach((option: any) => {
             this.options.push({
               variant_id: variant.id,
               option_type_name: option.option_type_name,
@@ -38,8 +38,10 @@ export class ProductComponent  {
       });
   }
 
-  public changeImage(url) {
-    document.getElementById('changedImage').src = 'http://139.162.34.44:8084'+url;
+  public changeImage(url: string) {
+    let prodImage = document.getElementById("changedImage") as HTMLImageElement;
+    prodImage.src = 'http://139.162.34.44:8084'+url;
   }
-
 }
+interface Option {}
+interface Image {}
