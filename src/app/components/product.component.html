@@ -1,4 +1,4 @@
-<div class="page_wrapper">
+<div class="product_wrapper">
   <div class="product_image" id="demo">
     <!-- <img src="http://lorempixel.com/400/200/sports/" alt=""> -->
     <img src="http://139.162.34.44:8084{{image}}" alt="" id="changedImage">
@@ -10,18 +10,17 @@
       <h3>Colors:</h3>
       <ul>
         <li>
-          <button (click)="changeImage(image)">
+          <a (click)="changeImage(image)">
           <img src="http://139.162.34.44:8084{{image}}" alt="">
-          </button>
+        </a>
         </li>
         <li *ngFor="let option of options">
-          <button (click)="changeImage(option.images[0].product_url)">
+          <a (click)="changeImage(option.images[0].product_url)">
             <img src="http://139.162.34.44:8084{{option.images[0].product_url }}" alt="">
-          </button>
+          </a>
 
         </li>
       </ul>
-
 
       <h3>Item #: <span>{{product.id}}</span></h3>
     </div>

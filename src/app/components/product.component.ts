@@ -6,6 +6,7 @@ import { ProductService } from '../services/product.service';
   moduleId: module.id,
   selector: 'product',
   templateUrl: './product.component.html',
+  styleUrls: ['../css/product_page.css']
   providers: [ProductService]
 })
 export class ProductComponent  {
